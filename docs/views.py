@@ -14,7 +14,7 @@ from functools import wraps
 from django.contrib.admin.forms import AdminAuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.admin.views.decorators import staff_member_required
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 
 def superuser_required(view_func):
@@ -92,14 +92,14 @@ def serve_docs(request, path, **kwargs):
         raise DocsRootSettingError('DOCS_ROOT setting value is incorrect: %s (must be a valid path)' % DOCS_ROOT)
     if 'document_root' not in kwargs:
         kwargs['document_root'] = DOCS_ROOT
-    
+
     try:
         return serve(request, path, **kwargs)
     except Http404:
         if DOCS_DIRHTML:
             path = join(path, "index.html")
             return serve(request, path, **kwargs)
-        
+
         raise
 
 
