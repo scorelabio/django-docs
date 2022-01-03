@@ -44,7 +44,7 @@ Installation
 
     urlpatterns = [
         ...
-        url(r'^docs/', include('docs.urls')),
+        re_path(r'^docs/', include('docs.urls')),
         ...
     ]
 
